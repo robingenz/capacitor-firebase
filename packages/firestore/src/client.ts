@@ -1,7 +1,7 @@
 import { Timestamp as OriginalTimestamp } from 'firebase/firestore';
 
 import type { DocumentSnapshot, FirebaseFirestorePlugin } from './definitions';
-import type { CustomField } from './internals';
+import type { CustomField, CustomTimestamp } from './internals';
 import { FIRESTORE_FIELD_TYPE, FIRESTORE_FIELD_VALUE } from './internals';
 import { Timestamp } from './timestamp';
 
@@ -86,8 +86,8 @@ function parseResultDocumentData(data: any): any {
     switch (field[FIRESTORE_FIELD_TYPE]) {
       case 'timestamp':
         return new Timestamp(
-          field[FIRESTORE_FIELD_VALUE].seconds,
-          field[FIRESTORE_FIELD_VALUE].nanoseconds,
+          (field as CustomTimestamp)[FIRESTORE_FIELD_VALUE].seconds,
+          (field as CustomTimestamp)[FIRESTORE_FIELD_VALUE].nanoseconds,
         );
     }
   }

@@ -629,6 +629,9 @@ Remove all listeners for this plugin.
 
 #### DocumentData
 
+Document data (for use with {@link @firebase/firestore/lite#(setDoc:1)}) consists of fields mapped to
+values.
+
 
 #### SetDocumentOptions
 
@@ -844,6 +847,9 @@ Remove all listeners for this plugin.
 
 #### QueryFilterConstraint
 
+<a href="#queryfilterconstraint">`QueryFilterConstraint`</a> is a helper union type that represents
+{@link <a href="#queryfieldfilterconstraint">QueryFieldFilterConstraint</a>} and {@link <a href="#querycompositefilterconstraint">QueryCompositeFilterConstraint</a>}.
+
 <code><a href="#queryfieldfilterconstraint">QueryFieldFilterConstraint</a> | <a href="#querycompositefilterconstraint">QueryCompositeFilterConstraint</a></code>
 
 
@@ -854,10 +860,21 @@ Remove all listeners for this plugin.
 
 #### QueryNonFilterConstraint
 
+<a href="#querynonfilterconstraint">`QueryNonFilterConstraint`</a> is a helper union type that represents
+QueryConstraints which are used to narrow or order the set of documents,
+but that do not explicitly filter on a document field.
+`QueryNonFilterConstraint`s are created by invoking {@link orderBy},
+{@link (startAt:1)}, {@link (startAfter:1)}, {@link (endBefore:1)}, {@link (endAt:1)},
+{@link limit} or {@link limitToLast} and can then be passed to {@link (query:1)}
+to create a new query instance that also contains the `QueryConstraint`.
+
 <code><a href="#queryorderbyconstraint">QueryOrderByConstraint</a> | <a href="#querylimitconstraint">QueryLimitConstraint</a> | <a href="#querystartatconstraint">QueryStartAtConstraint</a> | <a href="#queryendatconstraint">QueryEndAtConstraint</a></code>
 
 
 #### OrderByDirection
+
+The direction of a {@link orderBy} clause is specified as 'desc' or 'asc'
+(descending or ascending).
 
 <code>'desc' | 'asc'</code>
 
