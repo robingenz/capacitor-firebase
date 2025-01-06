@@ -1,21 +1,18 @@
 package io.capawesome.capacitorjs.plugins.firebase.firestore.classes.fields;
 
 import androidx.annotation.NonNull;
-
 import com.getcapacitor.JSObject;
-
+import io.capawesome.capacitorjs.plugins.firebase.firestore.enums.FirestoreFieldType;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import io.capawesome.capacitorjs.plugins.firebase.firestore.enums.FirestoreFieldType;
 
 public class FirestoreField {
 
     @NonNull
-    private FirestoreFieldType type;
+    private final FirestoreFieldType type;
 
     @NonNull
-    private JSONObject value;
+    private final JSONObject value;
 
     private static final String FIRESTORE_FIELD_TYPE = "_capacitorFirestoreFieldType";
     private static final String FIRESTORE_FIELD_VALUE = "_capacitorFirestoreFieldValue";
@@ -26,13 +23,10 @@ public class FirestoreField {
      * @return
      */
     public static boolean isFirestoreField(JSONObject firestoreFieldData) {
-        if (!firestoreFieldData.has(FIRESTORE_FIELD_TYPE)) {
-            return false;
-        }
-        return true;
+        return firestoreFieldData.has(FIRESTORE_FIELD_TYPE);
     }
 
-    public FirestoreField(FirestoreFieldType type, JSONObject value) {
+    public FirestoreField(@NonNull FirestoreFieldType type, @NonNull JSONObject value) {
         this.type = type;
         this.value = value;
     }
@@ -52,14 +46,11 @@ public class FirestoreField {
     }
 
     public Object getField() throws JSONException {
-        switch(type) {
-            case FIELD_VALUE:
-                return FieldValue.fromJSONObject(value).getField();
-            case TIMESTAMP:
-                return Timestamp.fromJSONObject(value).getField();
-            default:
-                return null;
-        }
+        return switch (type) {
+            case FIELD_VALUE -> FieldValue.fromJSONObject(value).getField();
+            case TIMESTAMP -> Timestamp.fromJSONObject(value).getField();
+            default -> null;
+        };
     }
 
     public JSObject getJSObject() throws JSONException {
