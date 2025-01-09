@@ -1,9 +1,9 @@
 import { registerPlugin } from '@capacitor/core';
 
-import { getClientPlugin } from './client';
+import { FirebaseFirestoreClient } from './client';
 import type { FirebaseFirestorePlugin } from './definitions';
 
-const FirebaseFirestore = getClientPlugin(
+const FirebaseFirestore: FirebaseFirestorePlugin = new FirebaseFirestoreClient(
   registerPlugin<FirebaseFirestorePlugin>('FirebaseFirestore', {
     web: () => import('./web').then(m => new m.FirebaseFirestoreWeb()),
   }),
