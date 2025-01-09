@@ -18,6 +18,8 @@ import type {
   GetCollectionGroupResult,
   GetCollectionOptions,
   GetCollectionResult,
+  GetCountFromServerOptions,
+  GetCountFromServerResult,
   GetDocumentOptions,
   GetDocumentResult,
   RemoveSnapshotListenerOptions,
@@ -74,6 +76,11 @@ export class FirebaseFirestoreClient implements FirebaseFirestorePlugin {
     options: GetCollectionGroupOptions,
   ): Promise<GetCollectionGroupResult<T>> {
     return parseResult(await this.plugin.getCollectionGroup<T>(options));
+  }
+  getCountFromServer(
+    options: GetCountFromServerOptions,
+  ): Promise<GetCountFromServerResult> {
+    return this.plugin.getCountFromServer(options);
   }
   clearPersistence(): Promise<void> {
     return this.plugin.clearPersistence();
