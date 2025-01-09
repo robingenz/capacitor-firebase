@@ -160,9 +160,9 @@ function parseResult<
     );
   }
   if ((result as GetCollectionGroupResult<T>)?.snapshots) {
-    (result as GetCollectionGroupResult<T>).snapshots.map(s =>
-      parseResultDocumentData(s),
-    );
+    (result as GetCollectionGroupResult<T>).snapshots = (
+      result as GetCollectionGroupResult<T>
+    ).snapshots.map(s => parseResultDocumentData(s));
   }
   return result;
 }
