@@ -45,6 +45,12 @@
 		7C90A58E2C21519B00A71389 /* AddCollectionGroupSnapshotListenerOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C90A58D2C21519B00A71389 /* AddCollectionGroupSnapshotListenerOptions.swift */; };
 		7CF0EFE32C207844004D910D /* WriteBatchOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0EFE22C207844004D910D /* WriteBatchOptions.swift */; };
 		7CF0EFE52C20784E004D910D /* WriteBatchOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0EFE42C20784E004D910D /* WriteBatchOperation.swift */; };
+		DADAB71F2D313A250035799A /* FirestoreFieldValueMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADAB71D2D313A250035799A /* FirestoreFieldValueMethod.swift */; };
+		DADAB7202D313A250035799A /* FirestoreFieldType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADAB71C2D313A250035799A /* FirestoreFieldType.swift */; };
+		DADAB7252D313A350035799A /* FirestoreTimestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADAB7232D313A350035799A /* FirestoreTimestamp.swift */; };
+		DADAB7262D313A350035799A /* FirestoreFieldValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADAB7222D313A350035799A /* FirestoreFieldValue.swift */; };
+		DADAB7272D313A350035799A /* FirestoreField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADAB7212D313A350035799A /* FirestoreField.swift */; };
+		DADAB7292D3171AF0035799A /* FirebaseFirestoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADAB7282D3171990035799A /* FirebaseFirestoreError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +107,12 @@
 		7CF0EFE42C20784E004D910D /* WriteBatchOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteBatchOperation.swift; sourceTree = "<group>"; };
 		91781294A431A2A7CC6EB714 /* Pods-Plugin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Plugin.release.xcconfig"; path = "Pods/Target Support Files/Pods-Plugin/Pods-Plugin.release.xcconfig"; sourceTree = "<group>"; };
 		96ED1B6440D6672E406C8D19 /* Pods-PluginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DADAB71C2D313A250035799A /* FirestoreFieldType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFieldType.swift; sourceTree = "<group>"; };
+		DADAB71D2D313A250035799A /* FirestoreFieldValueMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFieldValueMethod.swift; sourceTree = "<group>"; };
+		DADAB7212D313A350035799A /* FirestoreField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreField.swift; sourceTree = "<group>"; };
+		DADAB7222D313A350035799A /* FirestoreFieldValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreFieldValue.swift; sourceTree = "<group>"; };
+		DADAB7232D313A350035799A /* FirestoreTimestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreTimestamp.swift; sourceTree = "<group>"; };
+		DADAB7282D3171990035799A /* FirebaseFirestoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFirestoreError.swift; sourceTree = "<group>"; };
 		F65BB2953ECE002E1EF3E424 /* Pods-PluginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PluginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-PluginTests/Pods-PluginTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PluginTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -174,9 +186,11 @@
 		7C00700A2ABC1E7F000C0F28 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				DADAB71E2D313A250035799A /* Enums */,
 				7C0070382ABC2007000C0F28 /* Results */,
 				7C0070372ABC1FFC000C0F28 /* Constraints */,
 				7C0070302ABC1FB6000C0F28 /* Options */,
+				DADAB7242D313A350035799A /* Fields */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -256,6 +270,26 @@
 				F6753A823D3815DB436415E3 /* Pods_PluginTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DADAB71E2D313A250035799A /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				DADAB7282D3171990035799A /* FirebaseFirestoreError.swift */,
+				DADAB71C2D313A250035799A /* FirestoreFieldType.swift */,
+				DADAB71D2D313A250035799A /* FirestoreFieldValueMethod.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		DADAB7242D313A350035799A /* Fields */ = {
+			isa = PBXGroup;
+			children = (
+				DADAB7212D313A350035799A /* FirestoreField.swift */,
+				DADAB7222D313A350035799A /* FirestoreFieldValue.swift */,
+				DADAB7232D313A350035799A /* FirestoreTimestamp.swift */,
+			);
+			path = Fields;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -462,6 +496,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C0070362ABC1FD7000C0F28 /* UpdateDocumentOptions.swift in Sources */,
+				DADAB71F2D313A250035799A /* FirestoreFieldValueMethod.swift in Sources */,
+				DADAB7202D313A250035799A /* FirestoreFieldType.swift in Sources */,
+				DADAB7292D3171AF0035799A /* FirebaseFirestoreError.swift in Sources */,
 				7C0070322ABC1FC5000C0F28 /* RemoveSnapshotListenerOptions.swift in Sources */,
 				7C0070242ABC1F53000C0F28 /* QueryCompositeFilterConstraint.swift in Sources */,
 				7C0070282ABC1F6D000C0F28 /* QueryFieldFilterConstraint.swift in Sources */,
@@ -472,6 +509,9 @@
 				7C00700E2ABC1ED4000C0F28 /* AddCollectionSnapshotListenerOptions.swift in Sources */,
 				50E1A94820377CB70090CE1A /* FirebaseFirestorePlugin.swift in Sources */,
 				7C00702B2ABC1F7B000C0F28 /* QueryLimitConstraint.swift in Sources */,
+				DADAB7252D313A350035799A /* FirestoreTimestamp.swift in Sources */,
+				DADAB7262D313A350035799A /* FirestoreFieldValue.swift in Sources */,
+				DADAB7272D313A350035799A /* FirestoreField.swift in Sources */,
 				7C0070202ABC1F42000C0F28 /* GetDocumentOptions.swift in Sources */,
 				7C2AE7CB2D2DC2B400F40418 /* GetCountFromServerResult.swift in Sources */,
 				7CF0EFE52C20784E004D910D /* WriteBatchOperation.swift in Sources */,
