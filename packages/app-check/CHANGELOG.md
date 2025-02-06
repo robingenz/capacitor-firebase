@@ -1,5 +1,13 @@
 # Changelog
 
+## 7.1.0
+
+### Minor Changes
+
+- [`22bf3b58f24014db55e875d858f5a6f6e2efc3da`](https://github.com/capawesome-team/capacitor-firebase/commit/22bf3b58f24014db55e875d858f5a6f6e2efc3da) ([#810](https://github.com/capawesome-team/capacitor-firebase/pull/810)): feat(web): support static debug tokens
+
+- [`7f6117e12b4cf470916f3207d5c3e7eb13afe1f4`](https://github.com/capawesome-team/capacitor-firebase/commit/7f6117e12b4cf470916f3207d5c3e7eb13afe1f4) ([#812](https://github.com/capawesome-team/capacitor-firebase/pull/812)): feat(web): support all app check providers
+
 ## 7.0.0
 
 ### Major Changes
