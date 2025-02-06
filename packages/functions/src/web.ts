@@ -26,6 +26,9 @@ export class FirebaseFunctionsWeb
     const callable = httpsCallable<RequestData, ResponseData>(
       functions,
       options.name,
+      {
+        timeout: options.timeout
+      }
     );
     const result = await callable(options.data);
     return {
@@ -40,6 +43,9 @@ export class FirebaseFunctionsWeb
     const callable = httpsCallableFromURL<RequestData, ResponseData>(
       functions,
       options.url,
+      {
+        timeout: options.timeout
+      }
     );
     const result = await callable(options.data);
     return {

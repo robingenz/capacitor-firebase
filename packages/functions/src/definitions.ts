@@ -88,6 +88,11 @@ export interface CallOptions<RequestData = unknown> {
    * @since 6.1.0
    */
   data?: RequestData | null;
+
+  /**
+   * Time in milliseconds after which to cancel if there is no response. Default is 70000.
+   */
+  timeout?: number;
 }
 
 /**
