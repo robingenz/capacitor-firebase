@@ -31,6 +31,7 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import io.capawesome.capacitorjs.plugins.firebase.authentication.FirebaseAuthenticationHelper.ProviderId;
 import io.capawesome.capacitorjs.plugins.firebase.authentication.classes.ConfirmVerificationCodeOptions;
 import io.capawesome.capacitorjs.plugins.firebase.authentication.classes.GetIdTokenResult;
+import io.capawesome.capacitorjs.plugins.firebase.authentication.classes.GetIdTokenResultResult;
 import io.capawesome.capacitorjs.plugins.firebase.authentication.classes.LinkWithPhoneNumberOptions;
 import io.capawesome.capacitorjs.plugins.firebase.authentication.classes.PhoneVerificationCompletedEvent;
 import io.capawesome.capacitorjs.plugins.firebase.authentication.classes.SignInOptions;
@@ -182,6 +183,27 @@ public class FirebaseAuthentication {
                 callback.error(exception);
             }
         });
+    }
+
+    public void getIdTokenResult(Boolean forceRefresh, @NonNull final NonEmptyResultCallback callback) {
+        FirebaseUser user = getCurrentUser();
+        if (user == null) {
+            callback.error(new Exception(ERROR_NO_USER_SIGNED_IN));
+            return;
+        }
+        Task<GetTokenResult> idTokenResultTask = user.getIdToken(forceRefresh);
+        idTokenResultTask.addOnCompleteListener(
+            task -> {
+                if (task.isSuccessful()) {
+                    GetTokenResult tokenResult = task.getResult();
+                    GetIdTokenResultResult result = new GetIdTokenResultResult(tokenResult);
+                    callback.success(result);
+                } else {
+                    Exception exception = task.getException();
+                    callback.error(exception);
+                }
+            }
+        );
     }
 
     public void getPendingAuthResult(PluginCall call) {

@@ -248,6 +248,33 @@ public class FirebaseAuthenticationPlugin extends Plugin {
     }
 
     @PluginMethod
+    public void getIdTokenResult(PluginCall call) {
+        try {
+            Boolean forceRefresh = call.getBoolean("forceRefresh", false);
+
+            NonEmptyResultCallback callback = new NonEmptyResultCallback() {
+                @Override
+                public void success(Result result) {
+                    call.resolve(result.toJSObject());
+                }
+
+                @Override
+                public void error(Exception exception) {
+                    Logger.error(TAG, exception.getMessage(), exception);
+                    String code = FirebaseAuthenticationHelper.createErrorCode(exception);
+                    call.reject(exception.getMessage(), code);
+                }
+            };
+
+            implementation.getIdTokenResult(forceRefresh, callback);
+        } catch (Exception exception) {
+            Logger.error(TAG, exception.getMessage(), exception);
+            String code = FirebaseAuthenticationHelper.createErrorCode(exception);
+            call.reject(exception.getMessage(), code);
+        }
+    }
+
+    @PluginMethod
     public void getPendingAuthResult(PluginCall call) {
         try {
             implementation.getPendingAuthResult(call);

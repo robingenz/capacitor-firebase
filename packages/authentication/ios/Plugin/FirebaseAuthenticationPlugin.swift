@@ -233,6 +233,22 @@ public class FirebaseAuthenticationPlugin: CAPPlugin, CAPBridgedPlugin {
         })
     }
 
+    @objc func getIdTokenResult(_ call: CAPPluginCall) {
+        let forceRefresh = call.getBool("forceRefresh", false)
+
+        implementation?.getIdTokenResult(forceRefresh, completion: { result, error in
+            if let error = error {
+                CAPLog.print("[", self.tag, "] ", error)
+                let code = FirebaseAuthenticationHelper.createErrorCode(error: error)
+                call.reject(error.localizedDescription, code)
+                return
+            }
+            if let result = result {
+                call.resolve(result.toJSObject())
+            }
+        })
+    }
+
     @objc func getPendingAuthResult(_ call: CAPPluginCall) {
         call.reject("Not available on iOS.")
     }

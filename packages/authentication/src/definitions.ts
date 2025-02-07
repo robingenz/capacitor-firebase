@@ -107,6 +107,14 @@ export interface FirebaseAuthenticationPlugin {
    */
   getIdToken(options?: GetIdTokenOptions): Promise<GetIdTokenResult>;
   /**
+   * Returns a deserialized JSON Web Token (JWT) used to identify the user to a Firebase service.
+   *
+   * @since 6.4.0
+   */
+  getIdTokenResult(
+    options?: GetIdTokenResultOptions,
+  ): Promise<GetIdTokenResultResult>;
+  /**
    * Returns the `SignInResult` from the redirect-based sign-in flow.
    *
    * If sign-in was unsuccessful, fails with an error.
@@ -656,6 +664,18 @@ export interface GetIdTokenOptions {
 }
 
 /**
+ * @since 6.4.0
+ */
+export interface GetIdTokenResultOptions {
+  /**
+   * Force refresh regardless of token expiration.
+   *
+   * @since 6.4.0
+   */
+  forceRefresh: boolean;
+}
+
+/**
  * @since 0.1.0
  */
 export interface GetIdTokenResult {
@@ -665,6 +685,49 @@ export interface GetIdTokenResult {
    * @since 0.1.0
    */
   token: string;
+}
+
+export interface GetIdTokenResultResult {
+  /**
+   * The authentication time formatted as a UTC string.
+   *
+   * This is the time the user authenticated (signed in) and not the time the token was refreshed.
+   *
+   * @since 6.4.0
+   */
+  authTime: string;
+  /**
+   * The ID token expiration time formatted as a UTC string.
+   *
+   * @since 6.4.0
+   */
+  expirationTime: string;
+  /**
+   * The ID token issuance time formatted as a UTC string.
+   *
+   * @since 6.4.0
+   */
+  issuedAtTime: string;
+  /**
+   * The sign-in provider through which the ID token was obtained.
+   *
+   * @since 6.4.0
+   */
+  signInProvider: string | null;
+  /**
+   * The type of second factor associated with this session, provided the user was multi-factor
+   * authenticated (eg. phone, etc).
+   *
+   * @since 6.4.0
+   */
+  signInSecondFactor: string | null;
+  /**
+   * The entire payload claims of the ID token including the standard reserved claims as well as
+   * the custom claims.
+   *
+   * @since 6.4.0
+   */
+  claims: Record<string, unknown>;
 }
 
 /**
