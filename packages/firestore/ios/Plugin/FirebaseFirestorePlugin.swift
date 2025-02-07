@@ -37,6 +37,7 @@ public class FirebaseFirestorePlugin: CAPPlugin, CAPBridgedPlugin {
     private var pluginCallMap: [String: CAPPluginCall] = [:]
 
     override public func load() {
+        self.shouldStringifyDatesInCalls = false
         self.implementation = FirebaseFirestore(plugin: self)
     }
 

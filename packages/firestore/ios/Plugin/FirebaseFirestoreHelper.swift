@@ -64,6 +64,9 @@ public class FirebaseFirestoreHelper {
         guard let value = value else {
             return nil
         }
+        if let value = value as? Timestamp {
+            return value.dateValue()
+        }
         guard let value = JSTypes.coerceDictionaryToJSObject(["key": value]) as JSObject? else {
             return nil
         }
